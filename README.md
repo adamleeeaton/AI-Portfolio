@@ -71,5 +71,6 @@ The generalized skill packages at the end of this repository demonstrate how AI 
 - [Student Support Notes](skills/student-support-notes/SKILL.md)
 - [GPA Calculator](skills/gpa-calculator/SKILL.md)
 - [Academic Advising Role-Play](skills/academic-advising-role-play/SKILL.md)
+- [Knowledge Base Builder](skills/knowledge-base-article-builder/Skill.md)
 
 These files are examples of enablement artifacts. They should be reviewed, configured, and approved by the organization that intends to use them.
