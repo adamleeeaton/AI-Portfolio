@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Student Success AI Prompting | Portfolio Project</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container { position: relative; width: 100%; max-width: 100%; margin: 0 auto; height: 35vh; min-height: 250px; max-height: 400px; }
+        .glass-panel { background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #faf9f6; color: #292524; -webkit-tap-highlight-color: transparent; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        #anatomy-display { transition: opacity 0.2s ease-in-out; }
+        .accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+        .accordion-body.open { max-height: 600px; }
+        .fade-in { animation: fadeIn 0.25s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+<nav class="fixed w-full z-50 glass-panel">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="flex justify-between h-14 items-center">
+            <div class="flex items-center gap-2 flex-shrink-0">
+                <span class="text-xl">🎓</span>
+                <span class="font-bold text-sm tracking-tight text-stone-800">BYUI <span class="text-blue-700">STUDENT SUCCESS</span></span>
+            </div>
+            <div class="flex gap-3 text-[9px] font-black uppercase tracking-widest overflow-x-auto no-scrollbar ml-4">
+                <button onclick="scrollToSection('anatomy')"    class="text-stone-500 hover:text-blue-700 whitespace-nowrap">Anatomy</button>
+                <button onclick="scrollToSection('frameworks')" class="text-stone-500 hover:text-blue-700 whitespace-nowrap">Frameworks</button>
+                <button onclick="scrollToSection('techniques')" class="text-stone-500 hover:text-blue-700 whitespace-nowrap">Techniques</button>
+                <button onclick="scrollToSection('nvc')"        class="text-stone-500 hover:text-blue-700 whitespace-nowrap">Empathetic Communication</button>
+                <button onclick="scrollToSection('library')"   class="text-stone-500 hover:text-blue-700 whitespace-nowrap">Prompt Library</button>
+                <button onclick="scrollToSection('models')"     class="text-stone-500 hover:text-blue-700 whitespace-nowrap">Models</button>
+                <button onclick="scrollToSection('byui-ai')"    class="text-stone-500 hover:text-blue-700 whitespace-nowrap">AI Resources</button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<header class="pt-24 pb-12 bg-stone-50 border-b border-stone-200">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <h1 class="text-3xl md:text-5xl font-extrabold text-stone-900 mb-4 leading-tight">Student Success <br><span class="text-blue-700">AI Prompting</span></h1>
+        <p class="max-w-2xl mx-auto text-xs md:text-sm text-stone-600 leading-relaxed">An educational portfolio project demonstrating human-centered AI enablement, prompting, and workflow design. Examples are fictional or de-identified and are not official BYU-Idaho policy or guidance.</p>
+    </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-4 py-10 space-y-20">
+
+    <!-- 01 Prompt Anatomy -->
+    <section id="anatomy" class="scroll-mt-20">
+        <div class="mb-6 px-1">
+            <h2 class="text-xl font-black text-stone-900 uppercase tracking-tight">01. Prompt Anatomy</h2>
+            <p class="text-xs text-stone-500 mt-1 italic">Watch a prompt transform from generic to expert-level. Choose a framework, then tap each stage.</p>
+        </div>
+        <div class="bg-white rounded-3xl shadow-sm border border-stone-200 overflow-hidden">
+            <div class="flex items-center gap-1.5 bg-stone-900 px-4 py-2.5 overflow-x-auto no-scrollbar border-b border-white/10">
+                <span class="text-[9px] font-black uppercase text-stone-500 tracking-widest self-center mr-1 flex-shrink-0">Framework:</span>
+                <button onclick="setAnatomyFramework('rtf')"   id="afw-rtf"   class="flex-shrink-0 px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg bg-blue-600 text-white shadow-sm transition-all">RTF</button>
+                <button onclick="setAnatomyFramework('race')"  id="afw-race"  class="flex-shrink-0 px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg text-stone-400 hover:text-white transition-all">RACE</button>
+                <button onclick="setAnatomyFramework('care')"  id="afw-care"  class="flex-shrink-0 px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg text-stone-400 hover:text-white transition-all">CARE</button>
+                <button onclick="setAnatomyFramework('risen')" id="afw-risen" class="flex-shrink-0 px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg text-stone-400 hover:text-white transition-all">RISEN</button>
+                <button onclick="setAnatomyFramework('pgtc')"  id="afw-pgtc"  class="flex-shrink-0 px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg text-stone-400 hover:text-white transition-all">PGTC</button>
+                <button onclick="setAnatomyFramework('gold')"  id="afw-gold"  class="flex-shrink-0 px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg text-stone-400 hover:text-white transition-all">GOLD</button>
+            </div>
+            <div class="flex flex-col lg:flex-row">
+            <div class="p-4 bg-stone-50 border-b lg:border-b-0 lg:border-r border-stone-200 lg:w-1/3">
+                <div class="flex lg:flex-col gap-2 overflow-x-auto no-scrollbar pb-2 lg:pb-0">
+                    <button onclick="setAnatomy(0)" id="ab-0" class="flex-shrink-0 lg:w-full text-left px-4 py-3 rounded-xl border-2 border-blue-600 bg-blue-50 text-xs font-bold transition-all shadow-sm">Basic Ask</button>
+                    <button onclick="setAnatomy(1)" id="ab-1" class="flex-shrink-0 lg:w-full text-left px-4 py-3 rounded-xl border-2 border-transparent bg-white text-xs font-medium text-stone-500 transition-all">Add Context</button>
+                    <button onclick="setAnatomy(2)" id="ab-2" class="flex-shrink-0 lg:w-full text-left px-4 py-3 rounded-xl border-2 border-transparent bg-white text-xs font-medium text-stone-500 transition-all">Add Role</button>
+                    <button onclick="setAnatomy(3)" id="ab-3" class="flex-shrink-0 lg:w-full text-left px-4 py-3 rounded-xl border-2 border-transparent bg-white text-xs font-medium text-stone-500 transition-all">Full CARE</button>
+                </div>
+            </div>
+            <div class="p-6 lg:w-2/3 flex flex-col bg-stone-900 min-h-[280px]">
+                <div class="text-[9px] font-black uppercase text-stone-500 tracking-widest mb-2" id="anatomy-stage-label">Stage 1 of 4 — Basic Ask</div>
+                <div class="font-mono text-xs sm:text-sm text-blue-300 bg-black/30 p-4 rounded-xl border border-white/5 leading-relaxed" id="anatomy-display">"Write an email to a BYUI student struggling in Foundations."</div>
+                <div id="anatomy-analysis" class="mt-3 p-2 rounded-lg text-[10px] uppercase font-black tracking-widest bg-amber-500/10 text-amber-500 border border-amber-500/20 text-center">❌ Low Precision — Output will be generic and likely unhelpful</div>
+                <div id="anatomy-why" class="mt-3 p-3 rounded-xl bg-white/5 border border-white/10 text-[11px] text-stone-400 leading-relaxed">No role, no student context, no tone, no constraints. The AI has no idea who is writing, who the student is, or what "struggling" means. You'll get a template that could apply to any school, any course, any situation.</div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- 02 Frameworks -->
+    <section id="frameworks" class="scroll-mt-20">
+        <div class="px-1 mb-6">
+            <h2 class="text-xl font-black text-stone-900 uppercase tracking-tight">02. Prompting Frameworks</h2>
+            <p class="text-xs text-stone-500 mt-1">Six structured prompting approaches. Tap each to explore components and examples.</p>
+        </div>
+        <div class="flex gap-1 bg-stone-100 p-1 rounded-xl overflow-x-auto no-scrollbar mb-4">
+            <button onclick="setFramework('rtf')" id="fw-rtf" class="flex-shrink-0 px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg bg-white shadow-sm text-stone-900">RTF</button>
+            <button onclick="setFramework('race')" id="fw-race" class="flex-shrink-0 px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg text-stone-500">RACE</button>
+            <button onclick="setFramework('care')" id="fw-care" class="flex-shrink-0 px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg text-stone-500">CARE</button>
+            <button onclick="setFramework('risen')" id="fw-risen" class="flex-shrink-0 px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg text-stone-500">RISEN</button>
+            <button onclick="setFramework('pgtc')" id="fw-pgtc" class="flex-shrink-0 px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg text-stone-500">PGTC</button>
+            <button onclick="setFramework('gold')" id="fw-gold" class="flex-shrink-0 px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg text-stone-500">GOLD</button>
+        </div>
+        <div id="framework-display" class="bg-white rounded-3xl border border-stone-200 shadow-sm p-6 min-h-[200px]"></div>
+
+        <!-- Rhetorical Approach -->
+        <div class="mt-6 bg-blue-50 border border-blue-100 rounded-3xl p-6">
+            <h3 class="font-black text-blue-900 text-sm uppercase tracking-tight mb-1">The Rhetorical Approach</h3>
+            <p class="text-xs text-blue-800 leading-relaxed mb-4">Beyond acronyms — a method used in academic settings that builds prompts around classical communication principles. Critical for neurodiverse students or those balancing work and family.</p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                <div class="bg-white rounded-xl p-3 border border-blue-100"><div class="text-[10px] font-black uppercase text-blue-600 mb-1">Audience</div><p class="text-[11px] text-stone-600">Who will read or receive the output.</p></div>
+                <div class="bg-white rounded-xl p-3 border border-blue-100"><div class="text-[10px] font-black uppercase text-blue-600 mb-1">Context</div><p class="text-[11px] text-stone-600">Institutional situation or student scenario.</p></div>
+                <div class="bg-white rounded-xl p-3 border border-blue-100"><div class="text-[10px] font-black uppercase text-blue-600 mb-1">Ethos</div><p class="text-[11px] text-stone-600">Establish the advisor's credibility and role.</p></div>
+                <div class="bg-white rounded-xl p-3 border border-blue-100"><div class="text-[10px] font-black uppercase text-blue-600 mb-1">Pathos</div><p class="text-[11px] text-stone-600">Tone: empathetic, urgent, or encouraging.</p></div>
+                <div class="bg-white rounded-xl p-3 border border-blue-100"><div class="text-[10px] font-black uppercase text-blue-600 mb-1">Logos</div><p class="text-[11px] text-stone-600">Arrangement: chronological, thematic, or alphabetical.</p></div>
+                <div class="bg-white rounded-xl p-3 border border-blue-100"><div class="text-[10px] font-black uppercase text-blue-600 mb-1">Style</div><p class="text-[11px] text-stone-600">Avoid 2nd person; set word count and reading level.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 03 Advanced Techniques -->
+    <section id="techniques" class="scroll-mt-20">
+        <div class="px-1 mb-6">
+            <h2 class="text-xl font-black text-stone-900 uppercase tracking-tight">03. Advanced Techniques</h2>
+            <p class="text-xs text-stone-500 mt-1">Structured prompting techniques for complex tasks. Tap each card to expand.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div onclick="toggleAccordion(this)" class="bg-white border border-stone-200 rounded-2xl p-5 cursor-pointer hover:border-blue-300 transition-all select-none">
+                <div class="flex justify-between items-start">
+                    <div><span class="text-[9px] font-black uppercase text-stone-400">Zero-Shot</span><h4 class="font-black text-stone-800 text-sm mt-0.5">Direct Instruction</h4></div>
+                    <span class="toggle-icon text-stone-400 text-xl leading-none">−</span>
+                </div>
+                <p class="text-[11px] text-stone-500 mt-2">No examples provided. Best for simple, clear requests.</p>
+                <div class="accordion-body open mt-3 space-y-2">
+                    <div class="p-3 bg-stone-50 rounded-xl text-[11px] text-stone-700 italic border-l-2 border-blue-300">"Write a syllabus note about BYUI AI use policy for students."</div>
+                    <div class="text-[10px] font-bold text-blue-700 uppercase">Best for: Quick document generation, policy summaries</div>
+                    <div class="text-[11px] text-stone-500">Vague or unstructured requests frequently result in outputs that are generic, contextually inappropriate, or factually inaccurate — zero-shot works only when the task is straightforward or you need a rough draft to start.</div>
+                </div>
+            </div>
+            <div onclick="toggleAccordion(this)" class="bg-white border border-stone-200 rounded-2xl p-5 cursor-pointer hover:border-blue-300 transition-all select-none">
+                <div class="flex justify-between items-start">
+                    <div><span class="text-[9px] font-black uppercase text-stone-400">Few-Shot</span><h4 class="font-black text-stone-800 text-sm mt-0.5">Exemplar Learning</h4></div>
+                    <span class="toggle-icon text-stone-400 text-xl leading-none">+</span>
+                </div>
+                <p class="text-[11px] text-stone-500 mt-2">Provide 1–3 examples to match institutional tone.</p>
+                <div class="accordion-body mt-3 space-y-2">
+                    <div class="p-3 bg-stone-50 rounded-xl text-[11px] text-stone-700 italic border-l-2 border-blue-300">"Here are 3 empathetic warning emails we've used. Draft a new one in this same voice for a student on academic probation."</div>
+                    <div class="text-[10px] font-bold text-blue-700 uppercase">Best for: Consistent tone in outreach, matching an advisor's voice</div>
+                    <div class="text-[11px] text-stone-500">Research shows even 1–3 examples significantly improves the model's ability to match desired format and vocabulary for differentiated student levels.</div>
+                </div>
+            </div>
+
+            <div onclick="toggleAccordion(this)" class="bg-white border border-stone-200 rounded-2xl p-5 cursor-pointer hover:border-blue-300 transition-all select-none">
+                <div class="flex justify-between items-start">
+                    <div><span class="text-[9px] font-black uppercase text-stone-400">Structured Review</span><h4 class="font-black text-stone-800 text-sm mt-0.5">Financial Aid Appeal</h4></div>
+                    <span class="toggle-icon text-stone-400 text-xl leading-none">+</span>
+                </div>
+                <p class="text-[11px] text-stone-500 mt-2">Use a structured checklist before drafting an appeal so the criteria, assumptions, and gaps can be reviewed by an advisor.</p>
+                <div class="accordion-body mt-3 space-y-2">
+                    <div class="p-3 bg-stone-50 rounded-xl text-[11px] text-stone-700 italic border-l-2 border-blue-300">"A fictional student is preparing a financial aid appeal after falling below an academic requirement. Use a structured checklist to identify the stated criteria, rank the available evidence, flag gaps or risks, and draft a concise appeal using only information the advisor can verify. Provide a brief rationale for each recommendation."</div>
+                    <div class="text-[10px] font-bold text-blue-700 uppercase">Best for: Financial aid appeals, SAP disputes, exception requests</div>
+                    <div class="text-[11px] text-stone-500">A structured checklist helps advisors catch faulty assumptions before a letter reaches the financial aid office. Clear criteria, source verification, and subject-matter review are the safeguards.</div>
+                </div>
+            </div>
+            <div onclick="toggleAccordion(this)" class="bg-white border border-stone-200 rounded-2xl p-5 cursor-pointer hover:border-blue-300 transition-all select-none">
+                <div class="flex justify-between items-start">
+                    <div><span class="text-[9px] font-black uppercase text-stone-400">Analogical Prompting</span><h4 class="font-black text-stone-800 text-sm mt-0.5">Problem Recall</h4></div>
+                    <span class="toggle-icon text-stone-400 text-xl leading-none">+</span>
+                </div>
+                <p class="text-[11px] text-stone-500 mt-2">Ask the AI to recall similar problems before solving the current one.</p>
+                <div class="accordion-body mt-3 space-y-2">
+                    <div class="p-3 bg-stone-50 rounded-xl text-[11px] text-stone-700 italic border-l-2 border-blue-300">"What should a student do if they failed a core course that is only offered in the fall? Recall similar scheduling dilemmas before answering."</div>
+                    <div class="text-[10px] font-bold text-blue-700 uppercase">Best for: Complex edge cases, non-standard student situations</div>
+                    <div class="text-[11px] text-stone-500">Improved problem-solving for complex scenarios that don't fit standard policy language.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 04 NVC & Empathy -->
+    <section id="nvc" class="scroll-mt-20">
+        <div class="px-1 mb-6">
+            <h2 class="text-xl font-black text-stone-900 uppercase tracking-tight">04. Empathy & NVC Framework</h2>
+            <p class="text-xs text-stone-500 mt-1">Nonviolent Communication (OFNR) — keeping outreach human-centered. Tap each component.</p>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+            <button onclick="setNVC('observation')" id="nvc-observation" class="bg-white border-2 border-blue-600 rounded-2xl p-4 text-left transition-all">
+                <div class="text-xl mb-1">👁️</div>
+                <div class="font-black text-blue-800 text-xs uppercase">Observation</div>
+                <p class="text-[10px] text-stone-500 mt-1 leading-tight">Describe facts without judgment.</p>
+            </button>
+            <button onclick="setNVC('feeling')" id="nvc-feeling" class="bg-white border-2 border-stone-200 rounded-2xl p-4 text-left transition-all hover:border-blue-300">
+                <div class="text-xl mb-1">❤️</div>
+                <div class="font-black text-stone-700 text-xs uppercase">Feeling</div>
+                <p class="text-[10px] text-stone-500 mt-1 leading-tight">Acknowledge emotional state.</p>
+            </button>
+            <button onclick="setNVC('need')" id="nvc-need" class="bg-white border-2 border-stone-200 rounded-2xl p-4 text-left transition-all hover:border-blue-300">
+                <div class="text-xl mb-1">🌱</div>
+                <div class="font-black text-stone-700 text-xs uppercase">Need</div>
+                <p class="text-[10px] text-stone-500 mt-1 leading-tight">Identify the unmet root need.</p>
+            </button>
+            <button onclick="setNVC('request')" id="nvc-request" class="bg-white border-2 border-stone-200 rounded-2xl p-4 text-left transition-all hover:border-blue-300">
+                <div class="text-xl mb-1">🤝</div>
+                <div class="font-black text-stone-700 text-xs uppercase">Request</div>
+                <p class="text-[10px] text-stone-500 mt-1 leading-tight">Make a clear, actionable ask.</p>
+            </button>
+        </div>
+        <div class="bg-stone-900 text-white rounded-2xl p-5">
+            <div class="text-[10px] font-black uppercase text-blue-400 mb-1">Prompt Example</div>
+            <div id="nvc-prompt" class="font-mono text-[11px] text-blue-200 italic mb-4 leading-relaxed">"Describe the student's three missed assignments without using evaluative language."</div>
+            <div class="text-[10px] font-black uppercase text-amber-400 mb-1">Student Success Outcome</div>
+            <div id="nvc-outcome" class="text-xs text-stone-300">Avoids making the student feel judged or defensive, keeping the door open for support.</div>
+        </div>
+
+        <!-- Affective Computing -->
+        <div class="mt-6 bg-amber-50 border border-amber-100 rounded-3xl p-6">
+            <h3 class="font-black text-amber-900 text-sm uppercase tracking-tight mb-2">Affective Computing & Role-Play Training</h3>
+            <p class="text-xs text-amber-800 leading-relaxed mb-3">Use AI for "do-over" role-play simulations for staff training. Advisors can simulate contentious meetings or difficult financial aid conversations — practicing empathy-driven responses in a safe environment. Any attempt by an AI system to infer emotion from voice, video, or other signals can be unreliable and should not be used for high-stakes advising decisions.</p>
+            <div class="p-3 bg-white rounded-xl border border-amber-100 font-mono text-[11px] text-stone-700 italic">"Simulate a meeting where a student is frustrated about being placed on academic probation. I will play the advisor. Respond as the student and give me feedback on my empathy and de-escalation after each exchange."</div>
+        </div>
+    </section>
+
+    <!-- 05 Prompt Library -->
+    <section id="library" class="scroll-mt-20">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-6 gap-4 px-1">
+            <div>
+                <h2 class="text-xl font-black text-stone-900 uppercase tracking-tight">05. Prompt Library</h2>
+                <p class="text-xs text-stone-500 mt-1">Tap any card for the full prompt and simulated result. All examples are fictional or de-identified.</p>
+            </div>
+            <div class="flex gap-1 bg-stone-100 p-1 rounded-xl w-full sm:w-auto overflow-x-auto no-scrollbar">
+                <button onclick="filterLib('all')" id="f-all" class="flex-grow px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg bg-white shadow-sm text-stone-900">All</button>
+                <button onclick="filterLib('academic')" id="f-academic" class="flex-grow px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg text-stone-500">Academic</button>
+                <button onclick="filterLib('career')" id="f-career" class="flex-grow px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg text-stone-500">Career</button>
+            </div>
+        </div>
+        <div id="lib-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+    </section>
+
+    <!-- 06 AI Model Comparison -->
+    <section id="models" class="scroll-mt-20">
+        <div class="px-1 mb-6">
+            <h2 class="text-xl font-black text-stone-900 uppercase tracking-tight">06. AI Model Comparison</h2>
+            <p class="text-xs text-stone-500 mt-1">Model selection matters as much as the prompt. Tap each to see strengths and limitations.</p>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
+            <button onclick="setModel('gpt')" id="mb-gpt" class="p-4 rounded-2xl text-center border-2 transition-all bg-emerald-600 border-emerald-700">
+                <div class="font-black text-sm text-white">ChatGPT</div>
+                <div class="text-[9px] uppercase text-white/70 mt-0.5">OpenAI</div>
+            </button>
+            <button onclick="setModel('claude')" id="mb-claude" class="p-4 rounded-2xl text-center border-2 transition-all bg-white border-stone-200 hover:border-orange-300">
+                <div class="font-black text-sm text-stone-800">Claude</div>
+                <div class="text-[9px] uppercase text-stone-400 mt-0.5">Anthropic</div>
+            </button>
+            <button onclick="setModel('gemini')" id="mb-gemini" class="p-4 rounded-2xl text-center border-2 transition-all bg-white border-stone-200 hover:border-blue-300">
+                <div class="font-black text-sm text-stone-800">Gemini</div>
+                <div class="text-[9px] uppercase text-stone-400 mt-0.5">Google</div>
+            </button>
+            <button onclick="setModel('perplexity')" id="mb-perplexity" class="p-4 rounded-2xl text-center border-2 transition-all bg-white border-stone-200 hover:border-purple-300">
+                <div class="font-black text-sm text-stone-800">Perplexity</div>
+                <div class="text-[9px] uppercase text-stone-400 mt-0.5">Search AI</div>
+            </button>
+        </div>
+        <div id="model-detail" class="bg-white rounded-3xl border border-stone-200 shadow-sm p-6 min-h-[120px]"></div>
+    </section>
+
+
+
+    <!-- 07 BYU-Idaho AI Information -->
+    <section id="byui-ai" class="scroll-mt-20">
+        <div class="px-1 mb-6">
+            <h2 class="text-xl font-black text-stone-900 uppercase tracking-tight">07. BYU - Idaho AI Information</h2>
+            <p class="text-xs text-stone-500 mt-1">Public BYU-Idaho resources on artificial intelligence, tool guidance, and data privacy. Always verify current institutional guidance.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <a href="https://www.byui.edu/ai/" target="_blank" rel="noopener noreferrer"
+               class="group bg-white border border-stone-200 rounded-2xl p-6 shadow-sm hover:border-blue-400 hover:shadow-md transition-all flex flex-col gap-3">
+                <div class="w-10 h-10 bg-blue-700 rounded-xl flex items-center justify-center text-white text-lg">🤖</div>
+                <div>
+                    <h3 class="font-black text-stone-800 text-sm uppercase tracking-tight group-hover:text-blue-700 transition-colors">BYU - Idaho AI Hub</h3>
+                    <p class="text-xs text-stone-500 mt-1 leading-snug">The central landing page for BYU-Idaho's artificial intelligence initiative and guidance.</p>
+                </div>
+            </a>
+            <a href="https://www.byui.edu/ai/products" target="_blank" rel="noopener noreferrer"
+               class="group bg-white border border-stone-200 rounded-2xl p-6 shadow-sm hover:border-blue-400 hover:shadow-md transition-all flex flex-col gap-3">
+                <div class="w-10 h-10 bg-blue-700 rounded-xl flex items-center justify-center text-white text-lg">🛠️</div>
+                <div>
+                    <h3 class="font-black text-stone-800 text-sm uppercase tracking-tight group-hover:text-blue-700 transition-colors">Approved AI Products</h3>
+                    <p class="text-xs text-stone-500 mt-1 leading-snug">A public list of AI tools reviewed for use at BYU-Idaho; confirm current status before relying on it.</p>
+                </div>
+            </a>
+            <a href="https://www.byui.edu/ai/protecting-your-data/privacy" target="_blank" rel="noopener noreferrer"
+               class="group bg-white border border-stone-200 rounded-2xl p-6 shadow-sm hover:border-blue-400 hover:shadow-md transition-all flex flex-col gap-3">
+                <div class="w-10 h-10 bg-blue-700 rounded-xl flex items-center justify-center text-white text-lg">🔒</div>
+                <div>
+                    <h3 class="font-black text-stone-800 text-sm uppercase tracking-tight group-hover:text-blue-700 transition-colors">Protecting Your Data & Privacy</h3>
+                    <p class="text-xs text-stone-500 mt-1 leading-snug">Guidelines for safeguarding student and institutional data when using AI tools.</p>
+                </div>
+            </a>
+            <a href="https://forms.office.com/pages/responsepage.aspx?id=m278xvtRqEi3eZ7lZLQEE7CvaDFjeHNCvCjdAcnUYuhURUZQMUhRMjg5MkRIWjdSS1BSUUMxMFU3OSQlQCN0PWcu&route=shorturl" target="_blank" rel="noopener noreferrer"
+               class="group bg-white border border-stone-200 rounded-2xl p-6 shadow-sm hover:border-blue-400 hover:shadow-md transition-all flex flex-col gap-3">
+                <div class="w-10 h-10 bg-blue-700 rounded-xl flex items-center justify-center text-white text-lg">📋</div>
+                <div>
+                    <h3 class="font-black text-stone-800 text-sm uppercase tracking-tight group-hover:text-blue-700 transition-colors">CES ChatGPT License Request</h3>
+                    <p class="text-xs text-stone-500 mt-1 leading-snug">Request a ChatGPT license through the Church Educational System.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+</main>
+
+<footer class="bg-stone-900 text-stone-500 py-10 px-6 text-center">
+    <p class="text-[10px] uppercase tracking-widest font-bold mb-1">BYU-Idaho Student Success AI Training</p>
+    <p class="text-[9px] text-stone-600 normal-case">Portfolio project. Examples are fictional or de-identified; no private student, employee, or institutional data is included. Verify current institutional guidance before use.</p>
+</footer>
+
+<!-- Modal -->
+<div id="modal" class="fixed inset-0 bg-stone-950/90 z-[100] hidden items-end sm:items-center justify-center opacity-0 transition-opacity duration-300 px-0 sm:px-4">
+    <div class="bg-white w-full max-w-2xl rounded-t-[2.5rem] sm:rounded-3xl max-h-[92vh] overflow-y-auto p-6 sm:p-8 shadow-2xl transform translate-y-10 transition-transform duration-300">
+        <div class="flex justify-between items-center mb-6 sticky top-0 bg-white py-2 z-10">
+            <h3 id="m-title" class="font-black text-lg text-stone-800 uppercase tracking-tight">Detail View</h3>
+            <button onclick="closeModal()" class="w-10 h-10 flex items-center justify-center rounded-full bg-stone-100 text-stone-500 text-2xl">&times;</button>
+        </div>
+        <div class="space-y-6">
+            <div id="m-before-wrap" class="hidden">
+                <div class="flex items-center gap-2 mb-3">
+                    <h4 class="text-[10px] font-black uppercase text-rose-500 tracking-widest">Initial Prompt</h4>
+                    <span class="text-[9px] font-black bg-rose-100 text-rose-600 px-2 py-0.5 rounded-full uppercase">Before</span>
+                </div>
+                <div id="m-before" class="p-4 bg-rose-50 rounded-2xl font-mono text-[11px] text-rose-700 whitespace-pre-wrap border border-rose-100 italic leading-relaxed opacity-80"></div>
+                <div class="flex items-center gap-2 mt-3"><div class="flex-1 h-px bg-stone-200"></div><span class="text-[10px] font-black text-stone-400 uppercase">Improved ↓</span><div class="flex-1 h-px bg-stone-200"></div></div>
+            </div>
+            <div>
+                <div class="flex items-center gap-2 mb-3">
+                    <h4 class="text-[10px] font-black uppercase text-blue-600 tracking-widest">The Optimized Prompt</h4>
+                    <span id="m-after-badge" class="hidden text-[9px] font-black bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full uppercase">After</span>
+                </div>
+                <div id="m-prompt" class="p-5 bg-stone-50 rounded-2xl font-mono text-[11px] text-stone-700 whitespace-pre-wrap border border-stone-100 italic leading-relaxed"></div>
+            </div>
+            <div>
+                <h4 class="text-[10px] font-black uppercase text-stone-400 tracking-widest mb-3">Simulated Result</h4>
+                <div id="m-result" class="p-5 bg-blue-50/40 rounded-2xl text-xs text-stone-800 leading-relaxed border border-blue-100/50"></div>
+            </div>
+            <div class="p-5 bg-amber-50 rounded-2xl border border-amber-100">
+                <h4 class="text-[10px] font-black uppercase text-amber-700 mb-2">BYUI Insight</h4>
+                <p id="m-insight" class="text-xs text-amber-900 leading-snug"></p>
+            </div>
+        </div>
+        <div class="h-8"></div>
+    </div>
+</div>
+
+<script>
+// ===== ANATOMY =====
+let currentAnatomyFramework = 'rtf';
+const frameworkAnatomy = {
+    rtf: [
+        {
+            buttonLabel: "Basic Ask",
+            label: "Stage 1 of 4 — Basic Ask",
+            t: '"Write an email to a student who is behind in class."',
+            a: "❌ Low Precision — No role, task clarity, or format defined",
+            why: "RTF prompting requires three things: who the AI is (Role), what to produce (Task), and how to structure it (Format). This prompt is missing all three. The AI will make its own assumptions about voice, scope, and structure — and they probably won't match what you need."
+        },
+        {
+            buttonLabel: "Role",
+            label: "Stage 2 of 4 — Add Role",
+            t: '"You are an empathetic academic advisor at BYU-Idaho. Write an email to a student who is behind in class."',
+            a: "⚠️ Moderate Precision — Role defined, but Task and Format still missing",
+            why: "Adding a Role (R) — \"empathetic academic advisor at BYU-Idaho\" — gives the AI a voice and institutional identity. The email will feel like it comes from a real person. But we still haven't told it what specific situation to address (Task) or how to structure the output (Format), so the content will still be generic."
+        },
+        {
+            buttonLabel: "Task",
+            label: "Stage 3 of 4 — Add Task",
+            t: '"You are an empathetic academic advisor at BYU-Idaho. Write an outreach email to a freshman Biology student who has missed 3 labs and failed the midterm."',
+            a: "✅ High Precision — Role and Task defined, Format still open",
+            why: "Now the Task (T) is specific — the student's year, course, and warning signs are all in the prompt. Combined with the Role, the AI has a clear voice and a concrete situation to address. The final step is Format: telling it exactly how to structure the output so nothing is left to chance."
+        },
+        {
+            buttonLabel: "Format",
+            label: "Stage 4 of 4 — Full RTF",
+            t: '"Role: You are an empathetic academic advisor at BYU-Idaho. Task: Write an outreach email to a freshman Biology student who has missed 3 labs and failed the midterm — acknowledge their situation and offer two concrete next steps. Format: Under 150 words, plain paragraphs (no bullet points), warm but direct tone."',
+            a: "⭐ Expert Precision — Role, Task, and Format fully defined",
+            why: "This is RTF complete. Role gives the AI its voice, Task defines exactly what to create and why, and Format eliminates every structural ambiguity. The AI now has no assumptions left to make — the output is predictable, usable, and on-brand. This is the level every advisor email prompt should reach."
+        }
+    ],
+    race: [
+        {
+            buttonLabel: "Basic Ask",
+            label: "Stage 1 of 4 — Basic Ask",
+            t: '"Help me with a student who is struggling."',
+            a: "❌ Low Precision — Vague request with no RACE components",
+            why: "RACE breaks a task into four layers: who the AI is (Role), what to do (Action), what the situation is (Context), and how to do it step-by-step (Execute). This prompt provides none of them. The AI will produce something broad and generic that doesn't reflect BYU-Idaho's advising culture or this student's actual situation."
+        },
+        {
+            buttonLabel: "Role + Action",
+            label: "Stage 2 of 4 — Add Role & Action",
+            t: '"Role: BYU-Idaho academic advisor. Action: Draft an outreach email for a struggling student."',
+            a: "⚠️ Moderate Precision — Who and what defined, but no context or execution steps",
+            why: "Role (R) establishes the AI's identity, and Action (A) names the deliverable. But \"struggling\" still means nothing concrete — the AI doesn't know the student's year, course, warning signs, or urgency. RACE needs Context to make the output specific, and Execute to tell the AI exactly how to structure its response."
+        },
+        {
+            buttonLabel: "Context",
+            label: "Stage 3 of 4 — Add Context",
+            t: '"Role: BYU-Idaho academic advisor. Action: Draft an outreach email. Context: The student is a freshman in Biology who has missed 3 labs and scored 58% on the midterm. They have not responded to two prior emails."',
+            a: "✅ High Precision — Role, Action, and Context defined",
+            why: "Context (C) is where RACE really differentiates itself. Now the AI knows the student's year, course, exact warning signs, and communication history. The output will feel tailored — not like a form letter. The final step is Execute: giving the AI step-by-step instructions for how to write the email, not just what to write."
+        },
+        {
+            buttonLabel: "Execute",
+            label: "Stage 4 of 4 — Full RACE",
+            t: '"Role: BYU-Idaho academic advisor. Action: Draft an outreach email. Context: Freshman Biology student, missed 3 labs, 58% midterm, has not responded to two prior emails. Execute: (1) Open with empathy and acknowledge the specific missed assignments. (2) Provide two concrete next steps — Tutoring Center referral and appointment booking link. (3) Close with encouragement. Keep under 150 words."',
+            a: "⭐ Expert Precision — Full RACE with step-by-step execution",
+            why: "Execute (E) is the secret weapon of RACE. Instead of leaving the AI to decide how to structure the email, you give it a numbered recipe: start with empathy, name the issues, offer two action steps, close with encouragement, stay under 150 words. The AI becomes a co-author working from your playbook — not a guessing machine."
+        }
+    ],
+    care: [
+        {
+            buttonLabel: "Basic Ask",
+            label: "Stage 1 of 4 — Basic Ask",
+            t: '"Write an email to a BYUI student struggling in Foundations."',
+            a: "❌ Low Precision — Output will be generic and likely unhelpful",
+            why: "No role, no student context, no tone, no constraints. The AI has no idea who is writing, who the student is, or what \"struggling\" means. You'll get a template that could apply to any school, any course, any situation — not something you'd actually send."
+        },
+        {
+            buttonLabel: "Context",
+            label: "Stage 2 of 4 — Add Context",
+            t: '"Context: A freshman student in BIO 150 has missed 3 labs and scored 58% on the midterm. Write an outreach email to this student."',
+            a: "⚠️ Moderate Precision — Context helps, but no role or tone guidance",
+            why: "Context (C) is the foundation of CARE — it tells the AI who the student is and what happened. But without a Role (who is writing?) and an Expectation (what does a good output look like?), the message may still miss on tone, format, and institutional voice. More ingredients are needed."
+        },
+        {
+            buttonLabel: "Action + Role",
+            label: "Stage 3 of 4 — Add Action & Role",
+            t: '"Context: Freshman in BIO 150 — missed 3 labs, 58% midterm. Action: Draft an encouraging outreach email. Role: Caring BYUI academic advisor who believes every student can recover."',
+            a: "✅ High Precision — Context, Action, and Role defined",
+            why: "Action (A) tells the AI what to produce, and Role (R) gives it a voice and values. Combined with Context, the email will now feel personal and come from a recognizable advisor perspective. The last CARE component — Expectation — will lock in format and tone constraints so nothing is left to guesswork."
+        },
+        {
+            buttonLabel: "Expectation",
+            label: "Stage 4 of 4 — Full CARE",
+            t: '"Context: Sophomore transfer student, missed 3 labs, scored 58% on the midterm in BIO 150. Action: Draft an encouraging outreach email. Role: Caring BYUI advisor who values student growth. Expectation: Under 150 words, include Tutoring Center link, avoid punitive tone, end with a clear call to action."',
+            a: "⭐ Expert Precision — Full CARE alignment for maximum institutional impact",
+            why: "Expectation (E) is what separates a good prompt from a great one. By specifying word count, required inclusions, tone boundaries, and a closing structure, you eliminate every remaining assumption the AI might make. This is the level every advisor email prompt should aim for — ready to send with minimal editing."
+        }
+    ],
+    risen: [
+        {
+            buttonLabel: "Basic Ask",
+            label: "Stage 1 of 4 — Basic Ask",
+            t: '"Review this student information and tell me what they need."',
+            a: "❌ Low Precision — No role, input structure, steps, or constraints",
+            why: "RISEN is designed for complex, multi-step analysis tasks. Without defining the AI's Role, the raw Input, the analytical Steps, the output Expectation, and any Narrowing constraints, the AI will produce a shallow, unfocused response that misses the depth this situation requires."
+        },
+        {
+            buttonLabel: "Role + Input",
+            label: "Stage 2 of 4 — Add Role & Input",
+            t: '"Role: You are an experienced academic success coach at BYU-Idaho. Input: A sophomore student has a 2.1 GPA, missed 4 advising appointments, and is registered for 18 credits next semester."',
+            a: "⚠️ Moderate Precision — Role and Input defined, no steps or constraints yet",
+            why: "Role (R) gives the AI an expert identity, and Input (I) hands it the raw data. But we haven't told it what to do with that data — RISEN requires Steps to guide its reasoning process. Without them, the AI may jump to conclusions, miss risk factors, or produce an unstructured wall of text."
+        },
+        {
+            buttonLabel: "Steps + Expectation",
+            label: "Stage 3 of 4 — Add Steps & Expectation",
+            t: '"Role: Academic success coach at BYU-Idaho. Input: Sophomore, 2.1 GPA, 4 missed advising appointments, 18 credits next semester. Steps: (1) Identify the top 2 academic risk factors. (2) Suggest two immediate interventions. (3) Draft a 100-word check-in message. Expectation: Numbered output, one section per step."',
+            a: "✅ High Precision — Role, Input, Steps, and Expectation defined",
+            why: "Steps (S) are the core of RISEN — instead of letting the AI decide how to analyze the data, you walk it through a structured checklist. Expectation (E) tells it how to format the output. The final layer — Narrowing — will prevent scope creep and keep the analysis tightly focused on what actually matters."
+        },
+        {
+            buttonLabel: "Narrowing",
+            label: "Stage 4 of 4 — Full RISEN",
+            t: '"Role: Academic success coach at BYU-Idaho. Input: Sophomore, 2.1 GPA, 4 missed advising appointments, 18 credits next semester. Steps: (1) Identify top 2 academic risk factors. (2) Recommend two immediate interventions with rationale. (3) Draft a 100-word check-in message for the student. Expectation: Bullet-point risk factors, brief rationale per intervention, plain-text message. Narrowing: Focus only on academic performance and course load — do not address financial or personal issues."',
+            a: "⭐ Expert Precision — Full RISEN with focused, step-by-step reasoning",
+            why: "Narrowing (N) is what makes RISEN uniquely powerful for complex advising tasks. By explicitly telling the AI what NOT to include, you prevent it from wandering outside your scope or expertise. The result is a tightly focused, actionable analysis — exactly what you need in a time-pressured advising context."
+        }
+    ],
+    pgtc: [
+        {
+            buttonLabel: "Basic Ask",
+            label: "Stage 1 of 4 — Basic Ask",
+            t: '"Write something motivational for a student who is struggling."',
+            a: "❌ Low Precision — No persona, goal, task, or context",
+            why: "PGTC is a four-sentence framework — one sentence per component. Without any of them, the AI has no voice, no objective, no deliverable, and no context. The result will be motivational in the most generic sense, with nothing specific to BYU-Idaho or to this student's actual situation."
+        },
+        {
+            buttonLabel: "Persona + Goal",
+            label: "Stage 2 of 4 — Add Persona & Goal",
+            t: '"Persona: You are an empathetic BYU-Idaho success coach. Goal: Help a struggling freshman regain academic confidence."',
+            a: "⚠️ Moderate Precision — Voice and objective set, no deliverable or context yet",
+            why: "Persona (P) gives the AI a voice and values, and Goal (G) defines the end objective. But PGTC still needs two more sentences: Task tells it exactly what to produce, and Context provides the situational details that make the output feel real and relevant to this specific student."
+        },
+        {
+            buttonLabel: "Task",
+            label: "Stage 3 of 4 — Add Task",
+            t: '"Persona: You are an empathetic BYU-Idaho success coach. Goal: Help a struggling freshman regain academic confidence. Task: Write a motivational check-in message under 120 words."',
+            a: "✅ High Precision — Persona, Goal, and Task defined",
+            why: "Task (T) is where the rubber meets the road — it tells the AI exactly what to create and sets a length constraint. With three of four PGTC components, the output will be focused and appropriately scoped. Adding Context will personalize it from a generic message to one written for this specific student's situation."
+        },
+        {
+            buttonLabel: "Context",
+            label: "Stage 4 of 4 — Full PGTC",
+            t: '"Persona: You are an empathetic BYU-Idaho success coach. Goal: Help a struggling freshman regain academic confidence. Task: Write a motivational check-in message under 120 words. Context: The student has missed two consecutive classes in BIO 150 and has not responded to previous emails — this is the third outreach attempt."',
+            a: "⭐ Expert Precision — Four clean sentences, fully aligned PGTC prompt",
+            why: "Context (C) transforms a generic motivational message into something that feels written for this specific student — the course, the pattern of absences, and the communication history are all in the prompt. PGTC's discipline (one sentence per component) forces clarity before you write, and that clarity shows in the output."
+        }
+    ],
+    gold: [
+        {
+            buttonLabel: "Basic Ask",
+            label: "Stage 1 of 4 — Basic Ask",
+            t: '"How do we improve student retention?"',
+            a: "❌ Low Precision — No goal clarity, obstacles, logic, or data",
+            why: "GOLD is built for strategic and analytical thinking. Without a specific Goal, named Obstacles, an explicit Logic framework, and grounding in real Data, you'll get a surface-level list of generic retention ideas that could apply to any university — not a strategy grounded in BYU-Idaho's actual situation."
+        },
+        {
+            buttonLabel: "Goal",
+            label: "Stage 2 of 4 — Define the Goal",
+            t: '"Goal: Increase sophomore-to-junior retention at BYU-Idaho by 8% over the next two semesters. How should we approach this?"',
+            a: "⚠️ Moderate Precision — Goal is specific, but no obstacles, logic, or data",
+            why: "A specific Goal (G) anchors the entire GOLD prompt — it defines what success looks like and over what timeframe. But without naming the Obstacles (what's getting in the way), applying a Logic framework (how to reason about it), and grounding in Data (what we actually know), the analysis will still be broad and hypothetical."
+        },
+        {
+            buttonLabel: "Obstacles + Logic",
+            label: "Stage 3 of 4 — Add Obstacles & Logic",
+            t: '"Goal: Increase sophomore-to-junior retention by 8% over two semesters. Obstacles: High financial stress and unclear major pathways are the primary dropout drivers. Logic: Apply intrusive advising principles — proactively identify at-risk students before they disengage rather than reacting after withdrawal."',
+            a: "✅ High Precision — Goal, Obstacles, and Logic framework defined",
+            why: "Obstacles (O) force the AI to consider constraints, not just possibilities. Logic (L) tells it which analytical framework to apply — here, an early-intervention approach. Together, they shift the AI from brainstorming mode to strategic planning mode. Data grounds the recommendations in evidence that a human can verify."
+        },
+        {
+            buttonLabel: "Data",
+            label: "Stage 4 of 4 — Full GOLD",
+            t: '"Goal: Increase sophomore-to-junior retention by 8% over two semesters. Obstacles: Financial stress and unclear major pathways are primary dropout drivers. Logic: Apply intrusive advising — identify at-risk students before they disengage. Data: Students with 3+ missed assignments and a GPA below 2.5 in the first 6 weeks have a 73% higher withdrawal rate. Recommend three evidence-based interventions."',
+            a: "⭐ Expert Precision — Full GOLD with data-grounded strategic analysis",
+            why: "Data (D) is what makes GOLD uniquely powerful for institutional decision-making. When the analysis is anchored in real metrics — like a 73% higher withdrawal rate for students below 2.5 GPA in week 6 — the AI's recommendations are grounded in your institution's actual reality, not generic best practices. This is the level of prompting that informs real strategic decisions."
+        }
+    ]
+};
+function setAnatomyFramework(key) {
+    currentAnatomyFramework = key;
+    ['rtf','race','care','risen','pgtc','gold'].forEach(k => {
+        document.getElementById(`afw-${k}`).className = k === key
+            ? 'flex-shrink-0 px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg bg-blue-600 text-white shadow-sm transition-all'
+            : 'flex-shrink-0 px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg text-stone-400 hover:text-white transition-all';
+    });
+    setAnatomy(0);
+}
+function setAnatomy(idx) {
+    const stage = frameworkAnatomy[currentAnatomyFramework][idx];
+    const display = document.getElementById('anatomy-display');
+    display.style.opacity = '0';
+    setTimeout(() => {
+        display.innerText = stage.t;
+        document.getElementById('anatomy-stage-label').innerText = stage.label;
+        document.getElementById('anatomy-analysis').innerText = stage.a;
+        document.getElementById('anatomy-why').innerText = stage.why;
+        display.style.opacity = '1';
+    }, 200);
+    for (let i = 0; i < 4; i++) {
+        const btn = document.getElementById(`ab-${i}`);
+        btn.innerText = frameworkAnatomy[currentAnatomyFramework][i].buttonLabel;
+        btn.className = i === idx
+            ? 'flex-shrink-0 lg:w-full text-left px-4 py-3 rounded-xl border-2 border-blue-600 bg-blue-50 text-xs font-bold transition-all shadow-sm'
+            : 'flex-shrink-0 lg:w-full text-left px-4 py-3 rounded-xl border-2 border-transparent bg-white text-xs font-medium text-stone-400 transition-all';
+    }
+}
+
+// ===== FRAMEWORKS =====
+const frameworks = {
+    rtf:   { name:'RTF — Role, Task, Format',          badge:'bg-blue-100 text-blue-800',    prompt_bg:'bg-blue-50 border-blue-200',    use:'Ideal for generating concise administrative summaries or standardized email responses to common student inquiries.', components:['Role: Define who the AI should be (e.g., "senior academic advisor specializing in first-gen support")','Task: State exactly what to produce','Format: Specify the output structure — bullet list, email, table, numbered guide'], example:'"You are a senior academic advisor specializing in first-generation student support. Write a 3-step action plan for a student placed on academic probation. Format as a numbered checklist under 100 words."' },
+    race:  { name:'RACE — Role, Action, Context, Execute', badge:'bg-emerald-100 text-emerald-800', prompt_bg:'bg-emerald-50 border-emerald-200', use:'Best for developing detailed student outreach strategies that require institutional context and clear execution steps.', components:['Role: The AI persona to adopt','Action: The specific task to perform','Context: Institutional background or student details','Execute: Step-by-step instructions to follow'], example:'"Role: BYUI career services advisor. Action: Draft a LinkedIn outreach message. Context: Junior in Data Science targeting a summer internship at a tech firm. Execute: Keep under 150 words, reference BYUI background, end with a clear call to action."' },
+    care:  { name:'CARE — Context, Action, Role, Expectation', badge:'bg-violet-100 text-violet-800',  prompt_bg:'bg-violet-50 border-violet-200',  use:'Optimized for narrative-driven content such as student success stories, case studies, or advisor training materials.', components:['Context: Student history, major, and current obstacles','Action: Draft, map, synthesize, or analyze','Role: The mentor persona (e.g., "Spirit of Ricks" advisor)','Expectation: Constraints on tone, length, and format'], example:'"Context: Sophomore transfer student has missed 3 labs and scored 58% on the midterm in BIO 150. Action: Draft an encouraging outreach email. Role: Caring BYUI advisor who values student growth. Expectation: Under 150 words, include Tutoring Center link, avoid punitive tone."' },
+    risen: { name:'RISEN — Role, Input, Steps, Expectation, Narrowing', badge:'bg-rose-100 text-rose-800',     prompt_bg:'bg-rose-50 border-rose-200',     use:'Used for high-complexity tasks such as cross-referencing degree requirements with student transcripts.', components:['Role: Define the AI expert identity','Input: Provide the raw data or student information','Steps: Break the task into intermediate steps','Expectation: Define quality and format of output','Narrowing: Constraints to keep the output focused'], example:'"Role: Academic degree auditor. Input: [Paste student transcript]. Steps: First list remaining requirements; then flag completed ones; then identify scheduling conflicts. Expectation: Accurate prerequisite sequencing. Narrowing: Focus only on major requirements, not electives."' },
+    pgtc:  { name:'PGTC — Persona, Goal, Task, Context', badge:'bg-amber-100 text-amber-800',   prompt_bg:'bg-amber-50 border-amber-200',   use:'A streamlined four-sentence approach for quick, context-aware task delegation — one sentence per component.', components:['Persona: Who the AI is in one sentence','Goal: The overall objective in one sentence','Task: The specific deliverable in one sentence','Context: Key background in one sentence'], example:'"Persona: You are an empathetic BYU-Idaho success coach. Goal: Help a struggling freshman regain academic confidence. Task: Write a motivational check-in message. Context: The student has missed two consecutive classes and has not responded to previous emails."' },
+    gold:  { name:'GOLD — Goal, Obstacles, Logic, Data', badge:'bg-orange-100 text-orange-800',  prompt_bg:'bg-orange-50 border-orange-200',  use:'Particularly effective for strategic planning in enrollment management or identifying bottlenecks in graduation pipelines.', components:['Goal: The strategic outcome desired','Obstacles: Known barriers or constraints','Logic: The reasoning framework to apply','Data: Evidence or metrics to incorporate'], example:'"Goal: Increase sophomore retention by 10%. Obstacles: High financial stress and unclear major paths. Logic: Apply intrusive advising principles to at-risk segments. Data: 3+ missed assignments and GPA below 2.5 in the first 6 weeks are the primary early-warning indicators."' }
+};
+function setFramework(key) {
+    const fw = frameworks[key];
+    const d = document.getElementById('framework-display');
+    d.className = 'bg-white rounded-3xl border border-stone-200 shadow-sm p-6 min-h-[200px] fade-in';
+    void d.offsetWidth;
+    d.innerHTML = `
+        <span class="inline-block px-3 py-1 rounded-full text-[10px] font-black uppercase ${fw.badge} mb-3">${fw.name}</span>
+        <p class="text-xs text-stone-600 leading-relaxed mb-4">${fw.use}</p>
+        <div class="mb-4"><div class="text-[10px] font-black uppercase text-stone-400 mb-2">Components</div><div class="space-y-1.5">${fw.components.map(c=>`<div class="flex gap-2 text-[11px] text-stone-700"><span class="text-blue-500 flex-shrink-0 mt-0.5">▸</span>${c}</div>`).join('')}</div></div>
+        <div><div class="text-[10px] font-black uppercase text-stone-400 mb-2">Example Prompt</div><div class="p-4 ${fw.prompt_bg} border rounded-xl font-mono text-[11px] text-stone-700 italic leading-relaxed">${fw.example}</div></div>`;
+    ['rtf','race','care','risen','pgtc','gold'].forEach(k => {
+        document.getElementById(`fw-${k}`).className = k === key
+            ? 'flex-shrink-0 px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg bg-white shadow-sm text-stone-900'
+            : 'flex-shrink-0 px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg text-stone-500';
+    });
+}
+
+// ===== ACCORDION =====
+function toggleAccordion(el) {
+    const body = el.querySelector('.accordion-body');
+    const icon = el.querySelector('.toggle-icon');
+    const open = body.classList.contains('open');
+    body.classList.toggle('open', !open);
+    icon.textContent = open ? '+' : '−';
+}
+
+// ===== SSE =====
+const sseRows = [
+    { area:'Student Engagement', trad:'Reactive outreach after a student fails a quiz.', sse:'Designing automated nudges that trigger when a student misses a tutoring appointment.' },
+    { area:'Data Management',    trad:'Manually checking GPA and credits for a caseload.', sse:'Architecting "Student Radar" systems that surface alerts based on behavioral metadata.' },
+    { area:'Process Design',     trad:'Navigating institutional silos to help one student at a time.', sse:'Engineering workflows that scale personalized onboarding across the entire freshman class.' },
+    { area:'Continuous Improvement', trad:'Reflecting on personal interactions to improve skills.', sse:'Refining prompt libraries and decision trees based on retention and completion KPIs.' }
+];
+let currentSSE = 'traditional';
+function setSSEView(view) {
+    currentSSE = view;
+    const isSSE = view === 'sse';
+    document.getElementById('sse-display').innerHTML = sseRows.map((r,i)=>`
+        <div class="flex gap-4 p-4 rounded-xl ${isSSE?'bg-blue-50 border border-blue-100':'bg-stone-50 border border-stone-100'}">
+            <div class="w-8 h-8 rounded-full ${isSSE?'bg-blue-700':'bg-stone-400'} text-white flex items-center justify-center text-[10px] font-black flex-shrink-0">${i+1}</div>
+            <div><div class="text-[10px] font-black uppercase ${isSSE?'text-blue-700':'text-stone-500'} mb-0.5">${r.area}</div><p class="text-xs text-stone-700 leading-snug">${isSSE?r.sse:r.trad}</p></div>
+        </div>`).join('');
+    ['traditional','sse'].forEach(v => {
+        document.getElementById(`sse-btn-${v}`).className = v === view
+            ? 'flex-1 py-3 text-[10px] font-black uppercase tracking-widest bg-blue-700 text-white border-r border-blue-800 transition-all'
+            : 'flex-1 py-3 text-[10px] font-black uppercase tracking-widest bg-stone-100 text-stone-400 transition-all';
+    });
+}
+
+// ===== CAREER TABS =====
+const careerContent = {
+    resume: `<div class="bg-white rounded-3xl border border-stone-200 shadow-sm p-6 space-y-4 fade-in">
+        <p class="text-xs text-stone-600 leading-relaxed">AI is a primary drafting partner for resume enhancement — readability, credibility, and Applicant Tracking System (ATS) compatibility. Weave job description keywords into experience descriptions using results-focused language to show not just what the student did, but how well they did it.</p>
+        <div class="p-4 bg-stone-50 rounded-2xl border border-stone-100"><div class="text-[10px] font-black uppercase text-stone-400 mb-2">Keyword Scanner (Advanced)</div><p class="font-mono text-[11px] text-stone-700 italic leading-relaxed">"Analyze the job description for [Position at Company] and identify hard skills, soft skills, and action verbs emphasized by the employer. Then scan my resume to identify where these skills overlap and where they are missing."</p></div>
+        <div class="p-4 bg-stone-50 rounded-2xl border border-stone-100"><div class="text-[10px] font-black uppercase text-stone-400 mb-2">Impact Bullets (Intermediate)</div><p class="font-mono text-[11px] text-stone-700 italic leading-relaxed">"Rewrite my experience as a project manager to include 3–5 bullet points that show impact and specific metrics, incorporating the most important keywords from this job description."</p></div>
+    </div>`,
+    cover: `<div class="bg-white rounded-3xl border border-stone-200 shadow-sm p-6 space-y-4 fade-in">
+        <p class="text-xs text-stone-600 leading-relaxed">Cover letter AI checks for company names, job titles, and specific posting details so the letter feels uniquely written — not templated. Core pillars: personalization, structure, and clarity.</p>
+        <div class="p-4 bg-emerald-50 rounded-2xl border border-emerald-100"><div class="text-[10px] font-black uppercase text-emerald-700 mb-2">LinkedIn Optimization (Beginner)</div><p class="font-mono text-[11px] text-stone-700 italic leading-relaxed">"Craft a professional LinkedIn 'About' section (200–300 words) highlighting my research experience in [Field] and aspirations for [Career Path]. Use a personable but business-casual tone."</p></div>
+        <div class="p-4 bg-emerald-50 rounded-2xl border border-emerald-100"><div class="text-[10px] font-black uppercase text-emerald-700 mb-2">Networking Draft (Intermediate)</div><p class="font-mono text-[11px] text-stone-700 italic leading-relaxed">"Draft a concise (150-word) LinkedIn message to an alumnus in [Industry]. Express motivation to connect based on their recent article and ask for a 15-minute informational interview."</p></div>
+    </div>`,
+    advanced: `<div class="bg-white rounded-3xl border border-stone-200 shadow-sm p-6 space-y-4 fade-in">
+        <p class="text-xs text-stone-600 leading-relaxed">Use AI as a critic and coach — simulating recruiter and hiring manager perspectives to surface blind spots before the application goes out.</p>
+        <div class="p-4 bg-rose-50 rounded-2xl border border-rose-100"><div class="text-[10px] font-black uppercase text-rose-700 mb-2">Role-Play Feedback</div><p class="font-mono text-[11px] text-stone-700 italic leading-relaxed">"You are the recruiter for this role. Review my cover letter and identify skills or experience that you think are missing based on the job description."</p></div>
+        <div class="p-4 bg-rose-50 rounded-2xl border border-rose-100"><div class="text-[10px] font-black uppercase text-rose-700 mb-2">Perspective Swap</div><p class="font-mono text-[11px] text-stone-700 italic leading-relaxed">"Review my resume and cover letter from the perspective of a hiring manager. What areas of reservation would you have about my application?"</p></div>
+        <div class="p-4 bg-rose-50 rounded-2xl border border-rose-100"><div class="text-[10px] font-black uppercase text-rose-700 mb-2">Career Pivot Narrative</div><p class="font-mono text-[11px] text-stone-700 italic leading-relaxed">"Help me draft an explanation for a career gap or a switch from consulting to education, showing how my past skills have prepared me for this specific role."</p></div>
+        <div class="p-4 bg-rose-50 rounded-2xl border border-rose-100"><div class="text-[10px] font-black uppercase text-rose-700 mb-2">Interview Prep — STAR Method (Advanced)</div><p class="font-mono text-[11px] text-stone-700 italic leading-relaxed">"Using the STAR method (Situation, Task, Action, Result), generate 10 potential interview questions for an entry-level position at [Company]. After I provide an answer, give me critical feedback to improve the quantifiable impact of my response."</p></div>
+    </div>`
+};
+function setCareerTab(tab) {
+    document.getElementById('career-display').innerHTML = careerContent[tab];
+    ['resume','cover','advanced'].forEach(t => {
+        document.getElementById(`ct-${t}`).className = t === tab
+            ? 'flex-shrink-0 px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg bg-white shadow-sm text-stone-900'
+            : 'flex-shrink-0 px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg text-stone-500';
+    });
+}
+
+// ===== NVC =====
+const nvcData = {
+    observation: { prompt:'"Describe the student\'s three missed assignments without using evaluative language."', outcome:'Avoids making the student feel judged or defensive, keeping the door open for support.' },
+    feeling:     { prompt:'"Suggest potential feelings a student might have after failing a major exam."', outcome:'Helps the advisor prepare for the emotional weight of a meeting and respond with validation.' },
+    need:        { prompt:'"What core needs (e.g., safety, trust, autonomy) might be unmet for a student on academic probation?"', outcome:'Identifies the root cause of disengagement, leading to more effective and targeted interventions.' },
+    request:     { prompt:'"Formulate a clear, doable request for the student to meet with me during office hours."', outcome:'Provides the student with an actionable path forward that respects their agency.' }
+};
+function setNVC(key) {
+    document.getElementById('nvc-prompt').innerText = nvcData[key].prompt;
+    document.getElementById('nvc-outcome').innerText = nvcData[key].outcome;
+    ['observation','feeling','need','request'].forEach(k => {
+        document.getElementById(`nvc-${k}`).className = k === key
+            ? 'bg-white border-2 border-blue-600 rounded-2xl p-4 text-left transition-all shadow-md'
+            : 'bg-white border-2 border-stone-200 rounded-2xl p-4 text-left transition-all hover:border-blue-300';
+        document.getElementById(`nvc-${k}`).querySelector('.font-black').className = k === key ? 'font-black text-blue-800 text-xs uppercase' : 'font-black text-stone-700 text-xs uppercase';
+    });
+}
+
+// ===== AI MODELS =====
+const models = {
+    gpt:        { name:'ChatGPT', org:'OpenAI', accent:'emerald', use:'Creative writing, student engagement newsletters, orientation scripts, and brainstorming innovative program ideas.', limit:'May generate inaccurate or inconsistent outputs, especially in long logic chains; verify important claims.', best:['Orientation scripts and marketing materials','Student event brainstorming and engagement newsletters','Drafting narrative content with strong flow and storytelling'] },
+    claude:     { name:'Claude 3.5 Sonnet', org:'Anthropic', accent:'orange', use:'Degree audits, prerequisite sequencing, reviewing academic policies for logical consistency.', limit:'Can be overly structured and "dry"; requires more prompting effort for creative tasks.', best:['Complex degree audits with verifiable step-by-step reasoning','Policy review and consistency checking','Sensitive advising content requiring ethical guidelines'] },
+    gemini:     { name:'Gemini 1.5 Flash', org:'Google', accent:'blue', use:'Visual data patterns, analyzing dashboards, and cross-modal understanding of student data.', limit:'Less expressive in conversational text; sometimes goes "wide instead of deep" in reasoning.', best:['Dashboard and data visualization analysis','Cross-modal student data understanding','Google Workspace integration workflows'] },
+    perplexity: { name:'Perplexity', org:'Search AI', accent:'purple', use:'Fact-checking technical assumptions or institutional policies against current documentation.', limit:'Not designed for long-form content generation or creative brainstorming tasks.', best:['Verifying current institutional policy documentation','Fact-checking claims before including in advising materials','Research-grounded context for complex student questions'] }
+};
+const accentMap = {
+    emerald:{ bg:'bg-emerald-600', border:'border-emerald-700', light:'bg-emerald-50', lightBorder:'border-emerald-200', text:'text-emerald-700', activeCls:'bg-emerald-600 border-emerald-700 text-white' },
+    orange: { bg:'bg-orange-600',  border:'border-orange-700',  light:'bg-orange-50',  lightBorder:'border-orange-200',  text:'text-orange-700',  activeCls:'bg-orange-600 border-orange-700 text-white' },
+    blue:   { bg:'bg-blue-600',    border:'border-blue-700',    light:'bg-blue-50',    lightBorder:'border-blue-200',    text:'text-blue-700',    activeCls:'bg-blue-600 border-blue-700 text-white' },
+    purple: { bg:'bg-purple-600',  border:'border-purple-700',  light:'bg-purple-50',  lightBorder:'border-purple-200',  text:'text-purple-700',  activeCls:'bg-purple-600 border-purple-700 text-white' }
+};
+function setModel(key) {
+    const m = models[key]; const a = accentMap[m.accent];
+    const d = document.getElementById('model-detail');
+    d.className = 'bg-white rounded-3xl border border-stone-200 shadow-sm p-6 min-h-[120px] fade-in';
+    void d.offsetWidth;
+    d.innerHTML = `
+        <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 ${a.bg} rounded-xl flex items-center justify-center text-white font-black text-sm">${m.name[0]}</div>
+            <div><div class="font-black text-stone-900 text-sm">${m.name}</div><div class="text-[10px] text-stone-400 uppercase">${m.org}</div></div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 mb-4">
+            <div class="p-4 ${a.light} rounded-2xl border ${a.lightBorder}"><div class="text-[10px] font-black uppercase ${a.text} mb-2">Recommended For</div><p class="text-xs text-stone-700 leading-relaxed">${m.use}</p></div>
+            <div class="p-4 bg-rose-50 rounded-2xl border border-rose-100"><div class="text-[10px] font-black uppercase text-rose-700 mb-2">Higher Ed Limitation</div><p class="text-xs text-stone-700 leading-relaxed">${m.limit}</p></div>
+        </div>
+        <div><div class="text-[10px] font-black uppercase text-stone-400 mb-2">Best BYUI Use Cases</div><div class="space-y-1">${m.best.map(b=>`<div class="flex gap-2 text-[11px] text-stone-600"><span class="${a.text} flex-shrink-0">▸</span>${b}</div>`).join('')}</div></div>`;
+    ['gpt','claude','gemini','perplexity'].forEach(k => {
+        const btn = document.getElementById(`mb-${k}`);
+        const ak = accentMap[models[k].accent];
+        if (k === key) {
+            btn.className = `p-4 rounded-2xl text-center border-2 transition-all ${ak.activeCls}`;
+            btn.querySelector('.font-black').style.color = 'white';
+            btn.querySelector('.text-\\[9px\\]') && (btn.querySelectorAll('div')[1].style.color = 'rgba(255,255,255,0.7)');
+        } else {
+            btn.className = 'p-4 rounded-2xl text-center border-2 transition-all bg-white border-stone-200 hover:border-stone-300';
+            btn.querySelector('.font-black').style.color = '#1c1917';
+            btn.querySelectorAll('div')[1] && (btn.querySelectorAll('div')[1].style.color = '#a8a29e');
+        }
+    });
+}
+
+// ===== TRANSPARENCY =====
+const transparencyData = {
+    1:{ label:'Minimal Use',       dot:'bg-green-500',  badge:'bg-green-100 text-green-800',  desc:'Brainstorming or minor edits only.', reqs:['Internal notes required — no external disclosure needed','Appropriate for idea generation and rough drafts','No obligation to inform the student'] },
+    2:{ label:'Moderate Use',      dot:'bg-yellow-500', badge:'bg-yellow-100 text-yellow-800', desc:'Drafting specific questions, outlines, or sections.', reqs:['Archive AI output and all human revisions','Include a brief note to the student acknowledging AI assistance','Supervisor awareness recommended'] },
+    3:{ label:'Significant Use',   dot:'bg-orange-500', badge:'bg-orange-100 text-orange-800', desc:'AI forms the backbone of an advising plan or student communication.', reqs:['Maintain an edit log with rationale for changes','Public disclosure required','Supervisor review before delivering to student'] },
+    4:{ label:'Comprehensive Use', dot:'bg-red-500',    badge:'bg-red-100 text-red-800',       desc:'Majority of content is AI-generated.', reqs:['Full prompt-to-final archives stored in institutional repository','Complete transparency with student — disclose AI role explicitly','Subject-matter expert sign-off is mandatory before use'] }
+};
+function setTransparency(level) {
+    const d = transparencyData[level];
+    document.getElementById('transparency-detail').innerHTML = `
+        <div class="flex items-center gap-2 mb-3"><span class="px-3 py-1 rounded-full text-[10px] font-black uppercase ${d.badge}">Level ${level}: ${d.label}</span></div>
+        <p class="text-xs text-stone-600 mb-3">${d.desc}</p>
+        <div class="space-y-2">${d.reqs.map(r=>`<div class="flex gap-2 text-[11px] text-stone-700"><span class="w-2 h-2 rounded-full ${d.dot} flex-shrink-0 mt-1.5"></span>${r}</div>`).join('')}</div>`;
+    for (let i = 1; i <= 4; i++) {
+        document.getElementById(`tr-${i}`).className = i === level
+            ? 'flex-shrink-0 px-3 py-2 rounded-xl text-[10px] font-black uppercase bg-blue-700 text-white'
+            : 'flex-shrink-0 px-3 py-2 rounded-xl text-[10px] font-black uppercase bg-stone-100 text-stone-500';
+    }
+}
+
+
+// ===== LIBRARY =====
+const libraryData = [
+    { cat:'academic', level:'Intermediate', icon:'📧', title:'Student Support Nudge', desc:'Outreach email for struggling students with specific resources.', prompt:'Draft an email template to send to students struggling in [Course Name] that offers specific tutoring resources and office hour times, maintaining an encouraging and supportive tone.', result:'The AI produces a warm, non-punitive email naming specific campus resources, actionable next steps, and a coaching tone throughout — ready for light personalization before sending.', insight:'Pair with the NVC Feeling component: ask the AI to "anticipate how a stressed student might emotionally receive this" before finalizing the draft.' },
+    { cat:'academic', level:'Beginner',     icon:'📋', title:'Administrative Guide', desc:'Step-by-step student guide for common institutional processes.', prompt:'Write a clear, step-by-step guide for students on how to apply for a credit overload or credit limit override. Include key deadlines and contact information.', result:'A numbered, easy-to-follow guide with deadline callouts, contact details, and a checklist format that reduces repetitive questions to the advising office.', insight:'Use the RISEN framework for this task — the step-by-step structure ensures no administrative detail is skipped in complex processes.' },
+    { cat:'academic', level:'Advanced',     icon:'🗺️', title:'Degree Planning (Structured Review)', desc:'Course sequence planning with verifiable criteria and human review.', prompt:'Act as an academic advisor. First, list all remaining requirements for [Major]. Then identify which the student has completed from this transcript: [Synthetic Transcript]. Finally, suggest a course sequence for a sophomore maintaining a 15-credit load per semester. Provide a concise rationale, list prerequisite checks, and flag any assumptions for advisor review.', result:'A semester-by-semester plan with prerequisite verification, flagged conflicts, and clear review points — designed to be checked by a human advisor before use.', insight:'Structured criteria and explicit verification points help advisors catch policy errors before a student acts on a recommendation. High-stakes degree planning should never rely on an unreviewed black-box answer.' },
+    { cat:'academic', level:'Intermediate', icon:'🛡️', title:'Probation Support Letter', desc:'Reframe academic warning communications with a strengths-based lens.', prompt:'Evaluate the message and theme of this probation warning letter: [paste letter]. Suggest improvements that focus on strengths-based profiles and intrusive mentorship strategies rather than punitive language.', result:'Revised language that leads with the student\'s strengths, offers a concrete 3-step recovery plan, and explicitly invites the student to connect — rather than simply warning of consequences.', insight:'Cross-reference with NVC Observation: the AI should describe the situation factually before making any request, keeping the student\'s sense of agency intact.' },
+    { cat:'academic', level:'Advanced',     icon:'📊', title:'Canvas Engagement Analysis', desc:'Surface at-risk behavioral signals from engagement data.', prompt:'Act as a student success coach. Review this Canvas engagement summary: [data]. Identify 3 at-risk behavioral indicators and draft a personalized, non-punitive check-in message for each.', result:'The AI flags late submission patterns, low content-view time, and missed discussion participation as at-risk signals, then drafts a "just checking in" message with specific, actionable offers for each.', insight:'Aligns with the Student Success Engineer model — proactive intervention before finals week rather than reactive outreach after failure.' },
+    { cat:'career',   level:'Advanced',     icon:'🔍', title:'Keyword Scanner (ATS)', desc:'Match student resume to job description keywords for ATS compatibility.', prompt:'Analyze the job description for [Position at Company] and identify hard skills, soft skills, and action verbs emphasized by the employer. Then scan my resume to identify where these skills overlap and where they are missing.', result:'A two-column gap analysis showing matched and missing keywords, with suggested rewrites for each experience bullet to improve ATS compatibility and recruiter relevance.', insight:'Students often undersell transferable skills from campus roles. Prompt the AI to specifically look for BYUI campus experience that maps to the target job requirements.' },
+    { cat:'career',   level:'Intermediate', icon:'💼', title:'Campus Work Applied to Career', desc:'Translate student employment into professional STAR-method bullets.', prompt:'Act as a BYUI Career Advisor. My student works at the I-Center as a custodian. Help them write 3 STAR-method bullet points (Situation, Task, Action, Result) for an internship application at a tech firm, emphasizing transferable skills and quantifiable impact.', result:'Three polished bullets: "Managed high-volume customer flow (500+ daily interactions) across 3 service areas, reducing wait times by 20%..." — each with a measurable result.', insight:'The STAR method ensures every bullet has a quantifiable impact — the single biggest differentiator in competitive applications. Prompt the AI to push for numbers in every bullet.' },
+    { cat:'career',   level:'Beginner',     icon:'🔗', title:'LinkedIn About Section', desc:'Craft a compelling professional summary for student profiles.', prompt:'Craft a professional LinkedIn "About" section (200–300 words) highlighting my research experience in [Field] and my aspirations for [Career Path]. Use a personable but business-casual tone that sounds like an authentic BYU-Idaho student — not a generic template.', result:'A first-person narrative that opens with a compelling hook, weaves in specific field experience, references BYU-Idaho\'s academic environment, and closes with a clear professional goal and invitation to connect.', insight:'Have the student read it aloud after generation — AI "About" sections often feel stiff. The read-aloud test catches unnatural phrasing before publishing to recruiters.' },
+    { cat:'academic', level:'Advanced',     icon:'🆘', title:'Student in Distress', desc:'Empathetic email response to a student expressing being overwhelmed and discouraged.', before:'Write a response to this student.', prompt:'Role: You are an academic advisor at Brigham Young University–Idaho (BYU–Idaho).\n\nContext: A BYU-Idaho student has emailed: "I\'m overwhelmed. I\'m failing two classes and I don\'t think I can do this anymore."\n\nTask: Write a response email.\n\nConstraints:\n- Show empathy aligned with BYU-Idaho\'s supportive, student-centered approach\n- Do not provide mental health counseling\n- Encourage the student to take next steps within BYU-Idaho systems\n- Include 3–4 specific, actionable recommendations (e.g., meeting with an advisor, tutoring, adjusting course load)\n- Refer the student to appropriate BYU-Idaho resources (Counseling Center, Academic Support Centers, GS 102R, advising)\n- Maintain a professional and respectful tone consistent with BYU-Idaho values\n- Limit to 150–200 words\n\nOutput format:\n- Short email with greeting, body, and closing', result:'Subject: We\'re Here for You — Let\'s Talk\n\nDear [Student],\n\nThank you for reaching out. What you\'re feeling is real, and it takes courage to say it. You don\'t have to navigate this alone.\n\nHere are three steps I\'d recommend right now:\n\n1. Meet with me this week — let\'s look at your courses together and talk through realistic options, including a possible course load adjustment.\n2. Connect with the Academic Support Center — free tutoring and study strategy sessions are available and can make a real difference mid-semester.\n3. Reach out to BYU-Idaho\'s Counseling Center — they\'re equipped to help students who are feeling overwhelmed and can provide confidential support. \n4. Enroll in GS 102R — they help you establish academic goals and strategies. \n\nYou belong here, and there are people on campus who want to see you succeed. Please reply to schedule a time to meet.\n\nWarmly,\n[Advisor Name]', insight:'Notice how the improved prompt adds critical constraints the basic prompt omits entirely — especially "do not provide mental health counseling." Without that guardrail, AI may produce inappropriate clinical-sounding language. This is a prime example of why constraints protect both the student and the institution.' },
+    { cat:'academic', level:'Intermediate', icon:'📜', title:'Policy Translation', desc:'Convert public BYU-Idaho policy language into clear, student-friendly terms.', before:'Explain this policy in simple terms.', prompt:'Role: You are a BYU–Idaho academic advisor explaining a public policy to a student.\n\nContext: The following is current public BYU–Idaho policy text: [Paste policy text here]\n\nTask: Translate this policy into clear, student-friendly language.\n\nConstraints:\n- Only use information explicitly stated in the provided policy text\n- Do not add, assume, or infer rules not included in the policy\n- Clearly highlight key deadlines, requirements, and consequences\n- Include a section titled "What this means for you as a student"\n- Use simple, direct language appropriate for first- and second-year students\n\nOutput format:\n- Summary of policy (2–3 sentences)\n- Key deadlines and requirements (bullet points)\n- "What this means for you as a student" section', result:'Illustrative output:\nA concise, student-friendly summary with deadlines, requirements, and consequences clearly separated for review.\n\nReview note:\nAn advisor should verify the current source policy and institutional consequences before sharing the explanation with a student.', insight:'Always confirm you are using the current policy version from the official BYU-Idaho website before translating — policies change, and an outdated translation can mislead students at critical decision points.' }
+];
+
+function renderLib(filter) {
+    const filtered = libraryData.map((item, idx) => ({ ...item, _idx: idx })).filter(i => filter === 'all' || i.cat === filter);
+    document.getElementById('lib-grid').innerHTML = filtered.map(i => `
+        <div onclick="openModal(${i._idx})"
+             class="p-5 bg-white border border-stone-200 rounded-2xl shadow-sm cursor-pointer hover:border-blue-400 active:scale-[0.99] transition-all flex flex-col gap-3">
+            <div class="flex justify-between items-start">
+                <span class="text-xl bg-stone-50 w-10 h-10 flex items-center justify-center rounded-xl">${i.icon}</span>
+                <div class="flex flex-col items-end gap-1">
+                    ${i.before ? '<span class="text-[9px] font-black bg-rose-100 text-rose-600 px-2 py-0.5 rounded-full uppercase">Exercise</span>' : ''}
+                    <span class="text-[9px] font-black uppercase ${i.cat==='academic'?'text-blue-500':'text-emerald-600'}">${i.cat}</span>
+                    <span class="text-[9px] font-black uppercase text-stone-300">${i.level}</span>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-black text-stone-800 text-sm uppercase tracking-tight">${i.title}</h4>
+                <p class="text-xs text-stone-500 leading-tight mt-0.5">${i.desc}</p>
+            </div>
+            <div class="text-[9px] font-black uppercase text-stone-300 mt-auto">Tap to expand →</div>
+        </div>`).join('');
+}
+function filterLib(c) {
+    ['all','academic','career', 'Exercise'].forEach(id => {
+        document.getElementById(`f-${id}`).className = `flex-grow px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg ${c===id?'bg-white shadow-sm text-stone-900':'text-stone-400'}`;
+    });
+    renderLib(c);
+}
+function openModal(idx) {
+    const item = libraryData[idx];
+    const m = document.getElementById('modal'), mc = m.querySelector('.transform');
+    document.getElementById('m-title').innerText = item.title;
+    document.getElementById('m-prompt').innerText = item.prompt;
+    document.getElementById('m-result').innerText = item.result;
+    document.getElementById('m-insight').innerText = item.insight;
+    const beforeWrap = document.getElementById('m-before-wrap');
+    const afterBadge = document.getElementById('m-after-badge');
+    if (item.before) {
+        document.getElementById('m-before').innerText = item.before;
+        beforeWrap.classList.remove('hidden');
+        afterBadge.classList.remove('hidden');
+    } else {
+        beforeWrap.classList.add('hidden');
+        afterBadge.classList.add('hidden');
+    }
+    m.classList.remove('hidden'); m.classList.add('flex');
+    setTimeout(() => { m.classList.replace('opacity-0','opacity-100'); mc.classList.replace('translate-y-10','translate-y-0'); }, 10);
+    document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+    const m = document.getElementById('modal'), mc = m.querySelector('.transform');
+    m.classList.replace('opacity-100','opacity-0'); mc.classList.replace('translate-y-0','translate-y-10');
+    setTimeout(() => { m.classList.remove('flex'); m.classList.add('hidden'); }, 300);
+    document.body.style.overflow = 'auto';
+}
+document.getElementById('modal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+
+// ===== CHART =====
+function initChart() {
+    new Chart(document.getElementById('impactChart'), {
+        type: 'bar',
+        data: {
+            labels: ['Admin Load', 'Data Sifting', '1-on-1 Mentoring'],
+            datasets: [
+                { label: 'Without AI (hrs/week)', data: [20, 15, 10], backgroundColor: '#d6d3d1' },
+                { label: 'With AI Workflows (hrs/week)', data: [5, 4, 35], backgroundColor: '#1d4ed8' }
+            ]
+        },
+        options: {
+            maintainAspectRatio: false, responsive: true,
+            plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 9, weight: 'bold' } } } },
+            scales: { y: { beginAtZero: true, ticks: { font: { size: 9 } } }, x: { grid: { display: false }, ticks: { font: { size: 9 } } } }
+        }
+    });
+}
+
+function scrollToSection(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
+
+window.onload = () => {
+    setAnatomyFramework('rtf');
+    setFramework('rtf');
+    setNVC('observation');
+    setModel('gpt');
+    renderLib('all');
+    initChart();
+};
+</script>
+</body>
+</html>
