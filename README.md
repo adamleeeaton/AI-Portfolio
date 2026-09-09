@@ -62,7 +62,7 @@ skills/
 ├── advising-email-assistant/
 ├── student-support-notes/
 ├── gpa-calculator/
-└── academic-advising-role-play/
+└── etc...
 ```
 
 ## AI Enablement Skills
