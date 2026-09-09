@@ -33,7 +33,7 @@ An interactive educational website demonstrating prompt anatomy, prompting frame
 
 Replace the placeholder below with the live GitHub Pages URL for this repository:
 
-`https://[your-username].github.io/[repository-name]/`
+[https://adamleeeaton.github.io/AI-Portfolio/](https://adamleeeaton.github.io/AI-Portfolio/)
 
 ### Workflow Automation and Process Improvement
 
