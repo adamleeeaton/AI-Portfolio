@@ -1,4 +1,4 @@
-# AI for Student Success
+# AI Training for Student Success
 
 > **Portfolio project notice:** This repository is an educational portfolio project created to demonstrate AI enablement, prompting, and responsible implementation practices. Examples are fictional or de-identified, and this project is not an official BYU-Idaho policy, product, or institutional endorsement.
 
@@ -128,3 +128,12 @@ This is an evolving portfolio project. Contributions, feedback, and collaboratio
 ## Contact
 
 For more information, please connect with Adam Eaton. This repository does not replace official institutional guidance or approval processes.
+
+---
+
+## AI Enablement Skills
+
+- [Advising Email Assistant](skills/advising-email-assistant/SKILL.md)
+- [Student Support Notes](skills/student-support-notes/SKILL.md)
+- [GPA Calculator](skills/gpa-calculator/SKILL.md)
+- [Academic Advising Role-Play](skills/academic-advising-role-play/SKILL.md)
