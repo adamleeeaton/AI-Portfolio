@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Success AI Prompting | Portfolio Project</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -10,13 +10,20 @@
         .chart-container { position: relative; width: 100%; max-width: 100%; margin: 0 auto; height: 35vh; min-height: 250px; max-height: 400px; }
         .glass-panel { background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #faf9f6; color: #292524; -webkit-tap-highlight-color: transparent; }
+        button, a { -webkit-tap-highlight-color: transparent; }
+        button { min-height: 44px; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .break-words { overflow-wrap: break-word; }
+        .modal-panel { max-height: 92vh; max-height: 92dvh; }
         #anatomy-display { transition: opacity 0.2s ease-in-out; }
         .accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
         .accordion-body.open { max-height: 600px; }
         .fade-in { animation: fadeIn 0.25s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 640px) {
+            .chart-container { height: 260px; min-height: 220px; }
+        }
     </style>
 </head>
 <body class="antialiased overflow-x-hidden">
@@ -28,14 +35,15 @@
                 <span class="text-xl">🎓</span>
                 <span class="font-bold text-sm tracking-tight text-stone-800">BYUI <span class="text-blue-700">STUDENT SUCCESS</span></span>
             </div>
-            <div class="flex gap-3 text-[9px] font-black uppercase tracking-widest overflow-x-auto no-scrollbar ml-4">
-                <button onclick="scrollToSection('anatomy')"    class="text-stone-500 hover:text-blue-700 whitespace-nowrap">Anatomy</button>
-                <button onclick="scrollToSection('frameworks')" class="text-stone-500 hover:text-blue-700 whitespace-nowrap">Frameworks</button>
-                <button onclick="scrollToSection('techniques')" class="text-stone-500 hover:text-blue-700 whitespace-nowrap">Techniques</button>
-                <button onclick="scrollToSection('nvc')"        class="text-stone-500 hover:text-blue-700 whitespace-nowrap">Empathetic Communication</button>
-                <button onclick="scrollToSection('library')"   class="text-stone-500 hover:text-blue-700 whitespace-nowrap">Prompt Library</button>
-                <button onclick="scrollToSection('models')"     class="text-stone-500 hover:text-blue-700 whitespace-nowrap">Models</button>
-                <button onclick="scrollToSection('byui-ai')"    class="text-stone-500 hover:text-blue-700 whitespace-nowrap">AI Resources</button>
+            <div class="flex min-w-0 flex-1 gap-3 text-[9px] font-black uppercase tracking-widest overflow-x-auto no-scrollbar ml-4">
+                <a href="https://github.com/adamleeeaton/AI-Portfolio" target="_blank" rel="noopener noreferrer" aria-label="View this project on GitHub" class="flex-shrink-0 min-h-[44px] inline-flex items-center text-stone-500 hover:text-blue-700 whitespace-nowrap">↗ GitHub Repository</a>
+                <button onclick="scrollToSection('anatomy')"    class="flex-shrink-0 min-h-[44px] text-stone-500 hover:text-blue-700 whitespace-nowrap">Anatomy</button>
+                <button onclick="scrollToSection('frameworks')" class="flex-shrink-0 min-h-[44px] text-stone-500 hover:text-blue-700 whitespace-nowrap">Frameworks</button>
+                <button onclick="scrollToSection('techniques')" class="flex-shrink-0 min-h-[44px] text-stone-500 hover:text-blue-700 whitespace-nowrap">Techniques</button>
+                <button onclick="scrollToSection('nvc')"        class="flex-shrink-0 min-h-[44px] text-stone-500 hover:text-blue-700 whitespace-nowrap">Empathetic Communication</button>
+                <button onclick="scrollToSection('library')"   class="flex-shrink-0 min-h-[44px] text-stone-500 hover:text-blue-700 whitespace-nowrap">Prompt Library</button>
+                <button onclick="scrollToSection('models')"     class="flex-shrink-0 min-h-[44px] text-stone-500 hover:text-blue-700 whitespace-nowrap">Models</button>
+                <button onclick="scrollToSection('byui-ai')"    class="flex-shrink-0 min-h-[44px] text-stone-500 hover:text-blue-700 whitespace-nowrap">AI Resources</button>
             </div>
         </div>
     </div>
@@ -77,7 +85,7 @@
             </div>
             <div class="p-6 lg:w-2/3 flex flex-col bg-stone-900 min-h-[280px]">
                 <div class="text-[9px] font-black uppercase text-stone-500 tracking-widest mb-2" id="anatomy-stage-label">Stage 1 of 4 — Basic Ask</div>
-                <div class="font-mono text-xs sm:text-sm text-blue-300 bg-black/30 p-4 rounded-xl border border-white/5 leading-relaxed" id="anatomy-display">"Write an email to a BYUI student struggling in Foundations."</div>
+                <div class="font-mono text-xs sm:text-sm text-blue-300 bg-black/30 p-4 rounded-xl border border-white/5 leading-relaxed break-words" id="anatomy-display">"Write an email to a BYUI student struggling in Foundations."</div>
                 <div id="anatomy-analysis" class="mt-3 p-2 rounded-lg text-[10px] uppercase font-black tracking-widest bg-amber-500/10 text-amber-500 border border-amber-500/20 text-center">❌ Low Precision — Output will be generic and likely unhelpful</div>
                 <div id="anatomy-why" class="mt-3 p-3 rounded-xl bg-white/5 border border-white/10 text-[11px] text-stone-400 leading-relaxed">No role, no student context, no tone, no constraints. The AI has no idea who is writing, who the student is, or what "struggling" means. You'll get a template that could apply to any school, any course, any situation.</div>
             </div>
@@ -293,6 +301,8 @@
                     <h3 class="font-black text-stone-800 text-sm uppercase tracking-tight group-hover:text-blue-700 transition-colors">Protecting Your Data & Privacy</h3>
                     <p class="text-xs text-stone-500 mt-1 leading-snug">Guidelines for safeguarding student and institutional data when using AI tools.</p>
                 </div>
+            </a>
+        </div>
     </section>
 
 </main>
@@ -303,11 +313,11 @@
 </footer>
 
 <!-- Modal -->
-<div id="modal" class="fixed inset-0 bg-stone-950/90 z-[100] hidden items-end sm:items-center justify-center opacity-0 transition-opacity duration-300 px-0 sm:px-4">
-    <div class="bg-white w-full max-w-2xl rounded-t-[2.5rem] sm:rounded-3xl max-h-[92vh] overflow-y-auto p-6 sm:p-8 shadow-2xl transform translate-y-10 transition-transform duration-300">
+<div id="modal" role="dialog" aria-modal="true" aria-labelledby="m-title" class="fixed inset-0 bg-stone-950/90 z-[100] hidden items-end sm:items-center justify-center opacity-0 transition-opacity duration-300 px-0 sm:px-4">
+    <div class="modal-panel bg-white w-full max-w-2xl rounded-t-[2.5rem] sm:rounded-3xl overflow-y-auto p-6 sm:p-8 shadow-2xl transform translate-y-10 transition-transform duration-300">
         <div class="flex justify-between items-center mb-6 sticky top-0 bg-white py-2 z-10">
             <h3 id="m-title" class="font-black text-lg text-stone-800 uppercase tracking-tight">Detail View</h3>
-            <button onclick="closeModal()" class="w-10 h-10 flex items-center justify-center rounded-full bg-stone-100 text-stone-500 text-2xl">&times;</button>
+            <button type="button" onclick="closeModal()" aria-label="Close detail view" class="w-10 h-10 flex items-center justify-center rounded-full bg-stone-100 text-stone-500 text-2xl">&times;</button>
         </div>
         <div class="space-y-6">
             <div id="m-before-wrap" class="hidden">
@@ -323,7 +333,7 @@
                     <h4 class="text-[10px] font-black uppercase text-blue-600 tracking-widest">The Optimized Prompt</h4>
                     <span id="m-after-badge" class="hidden text-[9px] font-black bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full uppercase">After</span>
                 </div>
-                <div id="m-prompt" class="p-5 bg-stone-50 rounded-2xl font-mono text-[11px] text-stone-700 whitespace-pre-wrap border border-stone-100 italic leading-relaxed"></div>
+                <div id="m-prompt" class="p-5 bg-stone-50 rounded-2xl font-mono text-[11px] text-stone-700 whitespace-pre-wrap break-words border border-stone-100 italic leading-relaxed"></div>
             </div>
             <div>
                 <h4 class="text-[10px] font-black uppercase text-stone-400 tracking-widest mb-3">Simulated Result</h4>
@@ -756,7 +766,7 @@ function renderLib(filter) {
         </div>`).join('');
 }
 function filterLib(c) {
-    ['all','academic','career', 'Exercise'].forEach(id => {
+    ['all','academic','career'].forEach(id => {
         document.getElementById(`f-${id}`).className = `flex-grow px-3 py-1.5 text-[10px] font-bold uppercase rounded-lg ${c===id?'bg-white shadow-sm text-stone-900':'text-stone-400'}`;
     });
     renderLib(c);
@@ -786,13 +796,18 @@ function closeModal() {
     const m = document.getElementById('modal'), mc = m.querySelector('.transform');
     m.classList.replace('opacity-100','opacity-0'); mc.classList.replace('translate-y-0','translate-y-10');
     setTimeout(() => { m.classList.remove('flex'); m.classList.add('hidden'); }, 300);
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = '';
 }
 document.getElementById('modal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && !document.getElementById('modal').classList.contains('hidden')) closeModal();
+});
 
 // ===== CHART =====
 function initChart() {
-    new Chart(document.getElementById('impactChart'), {
+    const chartCanvas = document.getElementById('impactChart');
+    if (!chartCanvas || typeof Chart === 'undefined') return;
+    new Chart(chartCanvas, {
         type: 'bar',
         data: {
             labels: ['Admin Load', 'Data Sifting', '1-on-1 Mentoring'],
