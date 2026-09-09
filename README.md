@@ -127,4 +127,4 @@ This is an evolving portfolio project. Contributions, feedback, and collaboratio
 
 ## Contact
 
-For more information, please connect with the project author. This repository does not replace official institutional guidance or approval processes.
+For more information, please connect with Adam Eaton. This repository does not replace official institutional guidance or approval processes.
