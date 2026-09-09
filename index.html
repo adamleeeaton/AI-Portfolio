@@ -44,7 +44,7 @@
 <header class="pt-24 pb-12 bg-stone-50 border-b border-stone-200">
     <div class="max-w-4xl mx-auto px-6 text-center">
         <h1 class="text-3xl md:text-5xl font-extrabold text-stone-900 mb-4 leading-tight">Student Success <br><span class="text-blue-700">AI Prompting</span></h1>
-        <p class="max-w-2xl mx-auto text-xs md:text-sm text-stone-600 leading-relaxed">An educational portfolio project demonstrating human-centered AI enablement, prompting, and workflow design. Examples are fictional or de-identified and are not official BYU-Idaho policy or guidance.</p>
+        <p class="max-w-2xl mx-auto text-xs md:text-sm text-stone-600 leading-relaxed">An educational portfolio project demonstrating human-centered AI enablement, prompting, and workflow design. Examples are fictional or de-identified and are not official BYU-Idaho policy or guidance. This Training Website example was created 5/6/26 and may not have the most current information.</p>
     </div>
 </header>
 
@@ -660,8 +660,8 @@ function setNVC(key) {
 // ===== AI MODELS =====
 const models = {
     gpt:        { name:'ChatGPT', org:'OpenAI', accent:'emerald', use:'Creative writing, student engagement newsletters, orientation scripts, and brainstorming innovative program ideas.', limit:'May generate inaccurate or inconsistent outputs, especially in long logic chains; verify important claims.', best:['Orientation scripts and marketing materials','Student event brainstorming and engagement newsletters','Drafting narrative content with strong flow and storytelling'] },
-    claude:     { name:'Claude 3.5 Sonnet', org:'Anthropic', accent:'orange', use:'Degree audits, prerequisite sequencing, reviewing academic policies for logical consistency.', limit:'Can be overly structured and "dry"; requires more prompting effort for creative tasks.', best:['Complex degree audits with verifiable step-by-step reasoning','Policy review and consistency checking','Sensitive advising content requiring ethical guidelines'] },
-    gemini:     { name:'Gemini 1.5 Flash', org:'Google', accent:'blue', use:'Visual data patterns, analyzing dashboards, and cross-modal understanding of student data.', limit:'Less expressive in conversational text; sometimes goes "wide instead of deep" in reasoning.', best:['Dashboard and data visualization analysis','Cross-modal student data understanding','Google Workspace integration workflows'] },
+    claude:     { name:'Claude', org:'Anthropic', accent:'orange', use:'Degree audits, prerequisite sequencing, reviewing academic policies for logical consistency.', limit:'Can be overly structured and "dry"; requires more prompting effort for creative tasks.', best:['Complex degree audits with verifiable step-by-step reasoning','Policy review and consistency checking','Sensitive advising content requiring ethical guidelines'] },
+    gemini:     { name:'Gemini', org:'Google', accent:'blue', use:'Visual data patterns, analyzing dashboards, and cross-modal understanding of student data.', limit:'Less expressive in conversational text; sometimes goes "wide instead of deep" in reasoning.', best:['Dashboard and data visualization analysis','Cross-modal student data understanding','Google Workspace integration workflows'] },
     perplexity: { name:'Perplexity', org:'Search AI', accent:'purple', use:'Fact-checking technical assumptions or institutional policies against current documentation.', limit:'Not designed for long-form content generation or creative brainstorming tasks.', best:['Verifying current institutional policy documentation','Fact-checking claims before including in advising materials','Research-grounded context for complex student questions'] }
 };
 const accentMap = {
