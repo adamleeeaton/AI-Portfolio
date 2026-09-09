@@ -2,6 +2,8 @@
 
 > This repository is a professional portfolio demonstrating applied AI, enablement, workflow improvement, and responsible adoption practices. Examples are generalized, fictional, or de-identified and are not official policy or guidance for any institution.
 
+[View a live demo website](https://adamleeeaton.github.io/AI-Portfolio/)
+
 ## Overview
 
 This portfolio shows how I help people and organizations turn emerging AI capabilities into practical, measurable improvements. My work combines AI training, stakeholder engagement, process analysis, knowledge-base design, workflow automation, and human-centered change management.
