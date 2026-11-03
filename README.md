@@ -31,8 +31,6 @@ Examples of work involving custom AI assistants, behavior refinement, structured
 
 An interactive educational website demonstrating prompt anatomy, prompting frameworks, model selection, empathetic communication, role-play training, and practical use cases.
 
-Replace the placeholder below with the live GitHub Pages URL for this repository:
-
 [https://adamleeeaton.github.io/AI-Portfolio/](https://adamleeeaton.github.io/AI-Portfolio/)
 
 ### Workflow Automation and Process Improvement
